@@ -1,2 +1,0 @@
-# rotoshop
-Created with CodeSandbox
