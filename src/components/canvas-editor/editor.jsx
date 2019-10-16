@@ -52,7 +52,6 @@ function Editor(props = {}) {
   useEffect(() => {
     const canvas = ref.current;
     const ctx = canvas.getContext("2d");
-    console.log(ctx);
     loadImage(sampleImage).then(img => {
       ctx.filter =
         "sepia(.15) contrast(1.25) brightness(1.25) hue-rotate(5deg)";
