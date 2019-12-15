@@ -3,8 +3,8 @@ import { Link, withRouter } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import PhotoFilterIcon from "@material-ui/icons/PhotoFilterOutlined";
-import EditIcon from "@material-ui/icons/Edit";
-import SettingsIcon from "@material-ui/icons/Settings";
+import EditIcon from "@material-ui/icons/EditOutlined";
+import SettingsIcon from "@material-ui/icons/SettingsOutlined";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
