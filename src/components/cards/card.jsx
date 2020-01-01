@@ -13,3 +13,5 @@ function FilterCard({ title }) {
     </GridListTile>
   );
 }
+
+export default FilterCard;
