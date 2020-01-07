@@ -5,11 +5,13 @@ import GridListTileBar from "@material-ui/core/GridListTileBar";
 
 const useStyles = makeStyles(theme => ({}));
 
-function FilterCard({ title }) {
+function FilterCard({ title, img }) {
   return (
     <GridListTile>
-      <img src="" alt="card" />
+      <img src={img} alt="card" />
       <GridListTileBar />
     </GridListTile>
   );
 }
+
+export default FilterCard;

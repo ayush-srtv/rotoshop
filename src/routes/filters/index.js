@@ -1,4 +1,6 @@
 import React from "react";
+import { Card, Cards } from "../../components/cards";
+import { sampleImage } from "../../config/default.config.json";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
@@ -10,7 +12,13 @@ const useStyles = makeStyles(theme => ({
 
 function Filter() {
   const classes = useStyles();
-  return <div className={classes.container}>Filter</div>;
+  return (
+    <div className={classes.container}>
+      <Cards>
+        <Card img={sampleImage} />
+      </Cards>
+    </div>
+  );
 }
 
 export default Filter;
