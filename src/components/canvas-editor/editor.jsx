@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { sampleImage } from "../../config/default.config.json";
 
 const themeLogger = (namespace, fn, log = true) => (...args) => {
   if (log) console.log(namespace, ...args);
@@ -41,7 +40,7 @@ function loadImage(url) {
  * 4. use filter props from filter tab
  *
  */
-function Editor(props = {}) {
+function Editor({ canvas = {}, image }) {
   const classes = useStyles();
   const ref = useRef(null);
 
@@ -52,12 +51,12 @@ function Editor(props = {}) {
   useEffect(() => {
     const canvas = ref.current;
     const ctx = canvas.getContext("2d");
-    loadImage(sampleImage).then(img => {
+    loadImage(image).then(img => {
       ctx.filter =
         "sepia(.15) contrast(1.25) brightness(1.25) hue-rotate(5deg)";
       ctx.drawImage(img, 0, 0, 200, 200);
     });
-  }, [props]);
+  }, [image]);
 
   const canvasProps = Object.assign(
     {},
@@ -68,7 +67,7 @@ function Editor(props = {}) {
       className: classes.canvas,
       ref
     },
-    props
+    canvas
   );
 
   return <canvas {...canvasProps} />;

@@ -1,5 +1,6 @@
 import React from "react";
 import Editor from "../../components/canvas-editor/";
+import { sampleImage } from "../../config/default.config.json";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
@@ -13,7 +14,7 @@ function Canvas() {
   const classes = useStyles();
   return (
     <div className={classes.container}>
-      <Editor />
+      <Editor image={sampleImage} />
     </div>
   );
 }
