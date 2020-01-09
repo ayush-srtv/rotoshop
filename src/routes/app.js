@@ -24,7 +24,6 @@ const useStyles = makeStyles(theme => {
 
 function App({ children }) {
   const classes = useStyles();
-
   const titleProps = {
     variant: "h6",
     color: "inherit"
