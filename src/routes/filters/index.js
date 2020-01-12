@@ -22,33 +22,39 @@ const useStyles = makeStyles(theme => ({
 const filters = [
   {
     img: sampleImage,
-    title: "Breakfast",
-    subtitle: "Ayush Srivastava"
+    title: "1977",
+    subtitle: "Ayush Srivastava",
+    figClass: "_1977"
   },
   {
     img: sampleImage,
-    title: "Tasty burger",
-    subtitle: "Avi Nigam"
+    title: "Aden",
+    subtitle: "Avi Nigam",
+    figClass: "aden"
   },
   {
     img: sampleImage,
-    title: "Camera",
-    subtitle: "Ashish Bhaduria"
+    title: "Brannan",
+    subtitle: "Ashish Bhaduria",
+    figClass: "brannan"
   },
   {
     img: sampleImage,
-    title: "Morning",
-    subtitle: "Nilesh Kumrawat"
+    title: "Brooklyn",
+    subtitle: "Nilesh Kumrawat",
+    figClass: "brooklyn"
   },
   {
     img: sampleImage,
     title: "Hats",
-    subtitle: "Utkarsh Yeolkar"
+    subtitle: "Utkarsh Yeolkar",
+    figClass: ""
   },
   {
     img: sampleImage,
-    title: "Honey",
-    subtitle: "Omkar Khenewar"
+    title: "Clarendon",
+    subtitle: "Omkar Khenewar",
+    figClass: "clarendon"
   }
 ];
 
