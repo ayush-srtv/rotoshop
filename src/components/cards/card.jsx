@@ -17,7 +17,7 @@ function FilterCard({ title, img, subtitle, figClass = "", ...props }) {
 
   return (
     <GridListTile {...props}>
-      <figure class={figClass}>
+      <figure className={figClass}>
         <img src={img} alt={title} />
       </figure>
       <GridListTileBar
