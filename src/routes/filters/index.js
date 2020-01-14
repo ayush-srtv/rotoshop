@@ -23,37 +23,31 @@ const filters = [
   {
     img: sampleImage,
     title: "1977",
-    subtitle: "Ayush Srivastava",
     figClass: "_1977"
   },
   {
     img: sampleImage,
     title: "Aden",
-    subtitle: "Avi Nigam",
     figClass: "aden"
   },
   {
     img: sampleImage,
     title: "Brannan",
-    subtitle: "Ashish Bhaduria",
     figClass: "brannan"
   },
   {
     img: sampleImage,
     title: "Brooklyn",
-    subtitle: "Nilesh Kumrawat",
     figClass: "brooklyn"
   },
   {
     img: sampleImage,
     title: "Hats",
-    subtitle: "Utkarsh Yeolkar",
     figClass: ""
   },
   {
     img: sampleImage,
     title: "Clarendon",
-    subtitle: "Omkar Khenewar",
     figClass: "clarendon"
   }
 ];
