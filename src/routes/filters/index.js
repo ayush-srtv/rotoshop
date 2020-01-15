@@ -42,13 +42,23 @@ const filters = [
   },
   {
     img: sampleImage,
-    title: "Hats",
-    figClass: ""
+    title: "Clarendon",
+    figClass: "clarendon"
   },
   {
     img: sampleImage,
-    title: "Clarendon",
-    figClass: "clarendon"
+    title: "Earlybird",
+    figClass: "earlybird"
+  },
+  {
+    img: sampleImage,
+    title: "Gingham",
+    figClass: "gingham"
+  },
+  {
+    img: sampleImage,
+    title: "Hudson",
+    figClass: "hudson"
   }
 ];
 
