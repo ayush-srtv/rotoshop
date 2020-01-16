@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
@@ -17,7 +18,7 @@ function FilterCard({ title, img, subtitle, figClass = "", ...props }) {
 
   return (
     <GridListTile {...props}>
-      <figure className={figClass}>
+      <figure className={clsx(figClass, "filters")}>
         <img src={img} alt={title} />
       </figure>
       <GridListTileBar
