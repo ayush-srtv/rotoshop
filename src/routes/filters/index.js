@@ -50,6 +50,82 @@ const filters = [
   {
     title: "Hudson",
     figClass: "hudson"
+  },
+  {
+    title: "Inkwell",
+    figClass: "inkwell"
+  },
+  {
+    title: "Kelvin",
+    figClass: "kelvin"
+  },
+  {
+    title: "Lark",
+    figClass: "lark"
+  },
+  {
+    title: "Lo-Fi",
+    figClass: "lofi"
+  },
+  {
+    title: "Maven",
+    figClass: "maven"
+  },
+  {
+    title: "Mayfair",
+    figClass: "mayfair"
+  },
+  {
+    title: "Moon",
+    figClass: "moon"
+  },
+  {
+    title: "Nashville",
+    figClass: "nashville"
+  },
+  {
+    title: "Perpetua",
+    figClass: "perpetua"
+  },
+  {
+    title: "Nashville",
+    figClass: "nashville"
+  },
+  {
+    title: "Reyes",
+    figClass: "reyes"
+  },
+  {
+    title: "Rise",
+    figClass: "rise"
+  },
+  {
+    title: "Slumber",
+    figClass: "slumber"
+  },
+  {
+    title: "Stinson",
+    figClass: "stinson"
+  },
+  {
+    title: "Toaster",
+    figClass: "toaster"
+  },
+  {
+    title: "Valencia",
+    figClass: "valencia"
+  },
+  {
+    title: "Walden",
+    figClass: "walden"
+  },
+  {
+    title: "Willow",
+    figClass: "willow"
+  },
+  {
+    title: "X-pro II",
+    figClass: "xpro2"
   }
 ];
 
