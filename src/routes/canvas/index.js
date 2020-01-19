@@ -19,6 +19,18 @@ function Canvas() {
     canvas: {
       onDrop: ev => {
         console.log("File(s) dropped");
+        async function convertAndCompress(f) {
+          const options = {
+            maxSizeMB: 1,
+            maxWidthOrHeight: 1920,
+            useWebWorker: true
+          };
+          const compressedImage = await imageCompression(f, options);
+          const image = await toBase64(compressedImage);
+          if (await storage.set("image", image)) {
+            console.log("File saved");
+          }
+        }
 
         // Prevent default behavior (Prevent file from being opened)
         ev.preventDefault();
@@ -29,19 +41,7 @@ function Canvas() {
             // If dropped items aren't files, reject them
             if (ev.dataTransfer.items[i].kind === "file") {
               let file = ev.dataTransfer.items[i].getAsFile();
-              async function convertToBase64(f) {
-                const options = {
-                  maxSizeMB: 1,
-                  maxWidthOrHeight: 1920,
-                  useWebWorker: true
-                };
-                const compressedImage = await imageCompression(f, options);
-                const image = await toBase64(compressedImage);
-                if (await storage.set("image", image)) {
-                  console.log("File saved");
-                }
-              }
-              convertToBase64(file);
+              convertAndCompress(file);
 
               console.log("... file[" + i + "].name = " + file.name);
             }
@@ -49,6 +49,8 @@ function Canvas() {
         } else {
           // Use DataTransfer interface to access the file(s)
           for (let i = 0; i < ev.dataTransfer.files.length; i++) {
+            let file = ev.dataTransfer.files[i];
+            convertAndCompress(file);
             console.log(
               "... file[" + i + "].name = " + ev.dataTransfer.files[i].name
             );
