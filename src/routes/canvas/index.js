@@ -19,7 +19,7 @@ function Canvas() {
     canvas: {
       onDrop: ev => {
         console.log("File(s) dropped");
-        async function convertAndCompress(f) {
+        async function _convertAndCompress(f) {
           const options = {
             maxSizeMB: 1,
             maxWidthOrHeight: 1920,
@@ -41,7 +41,7 @@ function Canvas() {
             // If dropped items aren't files, reject them
             if (ev.dataTransfer.items[i].kind === "file") {
               let file = ev.dataTransfer.items[i].getAsFile();
-              convertAndCompress(file);
+              _convertAndCompress(file);
 
               console.log("... file[" + i + "].name = " + file.name);
             }
@@ -50,7 +50,7 @@ function Canvas() {
           // Use DataTransfer interface to access the file(s)
           for (let i = 0; i < ev.dataTransfer.files.length; i++) {
             let file = ev.dataTransfer.files[i];
-            convertAndCompress(file);
+            _convertAndCompress(file);
             console.log(
               "... file[" + i + "].name = " + ev.dataTransfer.files[i].name
             );
