@@ -1,0 +1,108 @@
+{
+  "filters": [
+    {
+      "title": "1977",
+      "figClass": "_1977"
+    },
+    {
+      "title": "Aden",
+      "figClass": "aden"
+    },
+    {
+      "title": "Brannan",
+      "figClass": "brannan"
+    },
+    {
+      "title": "Brooklyn",
+      "figClass": "brooklyn"
+    },
+    {
+      "title": "Clarendon",
+      "figClass": "clarendon"
+    },
+    {
+      "title": "Earlybird",
+      "figClass": "earlybird"
+    },
+    {
+      "title": "Gingham",
+      "figClass": "gingham"
+    },
+    {
+      "title": "Hudson",
+      "figClass": "hudson"
+    },
+    {
+      "title": "Inkwell",
+      "figClass": "inkwell"
+    },
+    {
+      "title": "Kelvin",
+      "figClass": "kelvin"
+    },
+    {
+      "title": "Lark",
+      "figClass": "lark"
+    },
+    {
+      "title": "Lo-Fi",
+      "figClass": "lofi"
+    },
+    {
+      "title": "Maven",
+      "figClass": "maven"
+    },
+    {
+      "title": "Mayfair",
+      "figClass": "mayfair"
+    },
+    {
+      "title": "Moon",
+      "figClass": "moon"
+    },
+    {
+      "title": "Nashville",
+      "figClass": "nashville"
+    },
+    {
+      "title": "Perpetua",
+      "figClass": "perpetua"
+    },
+    {
+      "title": "Reyes",
+      "figClass": "reyes"
+    },
+    {
+      "title": "Rise",
+      "figClass": "rise"
+    },
+    {
+      "title": "Slumber",
+      "figClass": "slumber"
+    },
+    {
+      "title": "Stinson",
+      "figClass": "stinson"
+    },
+    {
+      "title": "Toaster",
+      "figClass": "toaster"
+    },
+    {
+      "title": "Valencia",
+      "figClass": "valencia"
+    },
+    {
+      "title": "Walden",
+      "figClass": "walden"
+    },
+    {
+      "title": "Willow",
+      "figClass": "willow"
+    },
+    {
+      "title": "X-pro II",
+      "figClass": "xpro2"
+    }
+  ]
+}
