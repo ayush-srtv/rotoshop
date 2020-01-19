@@ -1,9 +1,10 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import imageCompression from "browser-image-compression";
 import Editor from "../../components/canvas-editor/";
 import { ImageContext } from "../../utils/context/image.context";
 import { toBase64 } from "../../utils/file";
 import storage from "../../utils/storage";
-import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -29,7 +30,13 @@ function Canvas() {
             if (ev.dataTransfer.items[i].kind === "file") {
               let file = ev.dataTransfer.items[i].getAsFile();
               async function convertToBase64(f) {
-                const image = await toBase64(f);
+                const options = {
+                  maxSizeMB: 1,
+                  maxWidthOrHeight: 1920,
+                  useWebWorker: true
+                };
+                const compressedImage = await imageCompression(f, options);
+                const image = await toBase64(compressedImage);
                 if (await storage.set("image", image)) {
                   console.log("File saved");
                 }
