@@ -54,16 +54,26 @@ function Editor({ canvas = {}, image }) {
     loadImage(image).then(img => {
       ctx.filter =
         "sepia(.15) contrast(1.25) brightness(1.25) hue-rotate(5deg)";
-      ctx.drawImage(img, 0, 0, 200, 200);
+      ctx.drawImage(
+        img,
+        0,
+        0,
+        img.width,
+        img.height,
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      );
     });
-  }, [image]);
+  });
 
   const canvasProps = Object.assign(
     {},
     {
       id: "editor",
-      height: "200px",
-      width: "200px",
+      // height: "200px",
+      // width: "200px",
       className: classes.canvas,
       ref
     },

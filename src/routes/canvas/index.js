@@ -1,5 +1,6 @@
 import React from "react";
 import Editor from "../../components/canvas-editor/";
+import { ImageContext } from "../../utils/context/image.context";
 import { toBase64 } from "../../utils/file";
 import storage from "../../utils/storage";
 import { makeStyles } from "@material-ui/core/styles";
@@ -11,11 +12,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Canvas(props) {
+function Canvas() {
   const classes = useStyles();
-  console.log("img", props);
   const canvasProps = {
-    image: props.image,
     canvas: {
       onDrop: ev => {
         console.log("File(s) dropped");
@@ -59,7 +58,9 @@ function Canvas(props) {
   };
   return (
     <div className={classes.container}>
-      <Editor {...canvasProps} />
+      <ImageContext.Consumer>
+        {image => <Editor image={image} {...canvasProps} />}
+      </ImageContext.Consumer>
     </div>
   );
 }

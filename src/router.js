@@ -16,7 +16,7 @@ function RouterConfig() {
     },
     {
       path: "/",
-      component: lazy(async () => {
+      component: lazy(async props => {
         await delay(700);
         return import(/* webpackChunkName: "canvas" */ "./routes/canvas/");
       })

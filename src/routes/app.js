@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Navigation from "../components/navigation";
 import { sampleImage } from "../config/default.config.json";
 import storage from "../utils/storage";
+import { ImageContext } from "../utils/context/image.context";
 
 const useStyles = makeStyles(theme => {
   console.dir(theme);
@@ -35,7 +36,6 @@ function App({ children }) {
   useEffect(() => {
     async function setupDefaults() {
       const img = (await storage.get("image")) || sampleImage;
-      console.log(img);
       setImage(img);
     }
     setupDefaults();
@@ -43,17 +43,17 @@ function App({ children }) {
   }, []);
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography {...titleProps}>Rotoshop</Typography>
-        </Toolbar>
-      </AppBar>
-      {React.Children.toArray(children).map(element =>
-        React.cloneElement(element, { image })
-      )}
-      <Navigation />
-    </div>
+    <ImageContext.Provider value={image}>
+      <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography {...titleProps}>Rotoshop</Typography>
+          </Toolbar>
+        </AppBar>
+        {children}
+        <Navigation />
+      </div>
+    </ImageContext.Provider>
   );
 }
 
