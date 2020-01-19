@@ -1,7 +1,7 @@
 import React from "react";
 import Editor from "../../components/canvas-editor/";
 import { toBase64 } from "../../utils/file";
-import { sampleImage } from "../../config/default.config.json";
+import storage from "../../utils/storage";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
@@ -11,10 +11,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Canvas() {
+function Canvas(props) {
   const classes = useStyles();
+  console.log("img", props);
   const canvasProps = {
-    image: sampleImage,
+    image: props.image,
     canvas: {
       onDrop: ev => {
         console.log("File(s) dropped");
@@ -29,9 +30,13 @@ function Canvas() {
             if (ev.dataTransfer.items[i].kind === "file") {
               let file = ev.dataTransfer.items[i].getAsFile();
               async function convertToBase64(f) {
-                console.log(await toBase64(f));
+                const image = await toBase64(f);
+                if (await storage.set("image", image)) {
+                  console.log("File saved");
+                }
               }
               convertToBase64(file);
+
               console.log("... file[" + i + "].name = " + file.name);
             }
           }

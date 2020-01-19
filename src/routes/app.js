@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Navigation from "../components/navigation";
 import Typography from "@material-ui/core/Typography";
+import Navigation from "../components/navigation";
+import { sampleImage } from "../config/default.config.json";
+import storage from "../utils/storage";
 
 const useStyles = makeStyles(theme => {
   console.dir(theme);
@@ -24,10 +26,21 @@ const useStyles = makeStyles(theme => {
 
 function App({ children }) {
   const classes = useStyles();
+  const [image, setImage] = useState();
   const titleProps = {
     variant: "h6",
     color: "inherit"
   };
+
+  useEffect(() => {
+    async function setupDefaults() {
+      const img = (await storage.get("image")) || sampleImage;
+      console.log(img);
+      setImage(img);
+    }
+    setupDefaults();
+    return () => {};
+  }, []);
 
   return (
     <div className={classes.root}>
@@ -36,7 +49,9 @@ function App({ children }) {
           <Typography {...titleProps}>Rotoshop</Typography>
         </Toolbar>
       </AppBar>
-      {children}
+      {React.Children.toArray(children).map(element =>
+        React.cloneElement(element, { image })
+      )}
       <Navigation />
     </div>
   );
