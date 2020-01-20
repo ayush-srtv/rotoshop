@@ -24,7 +24,7 @@ function Filter() {
   return (
     <div className={classes.root}>
       <ImageContext.Consumer>
-        {image => (
+        {({ image }) => (
           <Cards title="Filters" cellHeight={180} className={classes.gridList}>
             {filters.map(filter => (
               <Card key={filter.title} img={image} {...filter} />

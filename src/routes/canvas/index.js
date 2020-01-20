@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import imageCompression from "browser-image-compression";
 import Editor from "../../components/canvas-editor/";
 import { ImageContext } from "../../utils/context/image.context";
-import { toBase64 } from "../../utils/file";
-import storage from "../../utils/storage";
+import { getFileFromEvent, saveImage } from "../../utils/file";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -13,62 +11,29 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Canvas() {
+function Canvas(props, context) {
   const classes = useStyles();
+  const { setImage } = useContext(ImageContext);
   const canvasProps = {
     canvas: {
-      onDrop: ev => {
-        console.log("File(s) dropped");
-        async function _convertAndCompress(f) {
-          const options = {
-            maxSizeMB: 1,
-            maxWidthOrHeight: 1920,
-            useWebWorker: true
-          };
-          const compressedImage = await imageCompression(f, options);
-          const image = await toBase64(compressedImage);
-          if (await storage.set("image", image)) {
-            console.log("File saved");
-          }
-        }
-
+      onDrop: event => {
         // Prevent default behavior (Prevent file from being opened)
-        ev.preventDefault();
-
-        if (ev.dataTransfer.items) {
-          // Use DataTransferItemList interface to access the file(s)
-          for (let i = 0; i < ev.dataTransfer.items.length; i++) {
-            // If dropped items aren't files, reject them
-            if (ev.dataTransfer.items[i].kind === "file") {
-              let file = ev.dataTransfer.items[i].getAsFile();
-              _convertAndCompress(file);
-
-              console.log("... file[" + i + "].name = " + file.name);
-            }
-          }
-        } else {
-          // Use DataTransfer interface to access the file(s)
-          for (let i = 0; i < ev.dataTransfer.files.length; i++) {
-            let file = ev.dataTransfer.files[i];
-            _convertAndCompress(file);
-            console.log(
-              "... file[" + i + "].name = " + ev.dataTransfer.files[i].name
-            );
-          }
+        event.preventDefault();
+        async function _processFile() {
+          const file = await getFileFromEvent(event);
+          setImage(file);
+          await saveImage(file);
         }
+
+        _processFile();
       },
-      onDragOver: ev => {
-        console.log("File(s) in drop zone");
-
-        // Prevent default behavior (Prevent file from being opened)
-        ev.preventDefault();
-      }
+      onDragOver: ev => ev.preventDefault()
     }
   };
   return (
     <div className={classes.container}>
       <ImageContext.Consumer>
-        {image => <Editor image={image} {...canvasProps} />}
+        {({ image }) => <Editor image={image} {...canvasProps} />}
       </ImageContext.Consumer>
     </div>
   );

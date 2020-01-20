@@ -43,7 +43,7 @@ function App({ children }) {
   }, []);
 
   return (
-    <ImageContext.Provider value={image}>
+    <ImageContext.Provider value={{ image, setImage }}>
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
