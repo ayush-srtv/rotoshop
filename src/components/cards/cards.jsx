@@ -8,7 +8,7 @@ function FilterCards({
   skeleton = true,
   children,
   className,
-  cellHeight = 180,
+  cellHeight = "auto",
   cols = 2
 }) {
   const gridListProps = {
