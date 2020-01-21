@@ -13,13 +13,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function FilterCard({ title, img, subtitle, figClass = "", ...props }) {
+function FilterCard({ title, image, subtitle, figClass = "", ...props }) {
   const classes = useStyles();
 
   return (
     <GridListTile {...props}>
       <figure className={clsx(figClass, "filters")}>
-        <img src={img} alt={title} />
+        <img src={image} alt={title} />
       </figure>
       <GridListTileBar
         title={title}

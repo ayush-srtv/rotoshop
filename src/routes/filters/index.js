@@ -31,7 +31,7 @@ function Filter() {
             className={classes.gridList}
           >
             {filters.map(filter => (
-              <Card key={filter.title} img={image} {...filter} />
+              <Card {...{ ...filter, image, key: filter.title }} />
             ))}
           </Cards>
         )}
