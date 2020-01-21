@@ -33,7 +33,7 @@ function Canvas(props, context) {
   return (
     <div className={classes.container}>
       <ImageContext.Consumer>
-        {({ image }) => <Editor image={image} {...canvasProps} />}
+        {({ image }) => <Editor {...{ ...canvasProps, image }} />}
       </ImageContext.Consumer>
     </div>
   );
