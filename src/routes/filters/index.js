@@ -26,7 +26,6 @@ function Filter() {
       <ImageContext.Consumer>
         {({ image }) => (
           <Cards
-            title="Filters"
             cellHeight={"auto"}
             className={classes.gridList}
           >
