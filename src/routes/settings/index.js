@@ -73,6 +73,34 @@ function Settings() {
             />
           </div>
         </Grid>
+        <Grid item xs={12}>
+          <div className={classes.margin}>
+            <Typography id="discrete-slider-custom" gutterBottom>
+              Contrast
+            </Typography>
+            <PrettoSlider
+              value={state}
+              onChange={handleChange}
+              aria-labelledby="continuous-slider"
+              min={0}
+              max={100}
+            />
+          </div>
+        </Grid>
+        <Grid item xs={12}>
+          <div className={classes.margin}>
+            <Typography id="discrete-slider-custom" gutterBottom>
+              Saturation
+            </Typography>
+            <PrettoSlider
+              value={state}
+              onChange={handleChange}
+              aria-labelledby="continuous-slider"
+              min={0}
+              max={100}
+            />
+          </div>
+        </Grid>
       </Grid>
     </div>
   );
