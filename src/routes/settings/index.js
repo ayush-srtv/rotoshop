@@ -51,7 +51,7 @@ const PrettoSlider = withStyles({
 
 function Settings() {
   const classes = useStyles();
-  const [state, setState] = useState(12);
+  const [state, setState] = useState(50);
 
   const handleChange = (event, newValue) => {
     setState(newValue);
