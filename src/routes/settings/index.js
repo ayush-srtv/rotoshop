@@ -52,9 +52,17 @@ const PrettoSlider = withStyles({
 function Settings() {
   const classes = useStyles();
   const [state, setState] = useState(50);
+  const [brightness, setBrightness] = useState(50);
+  const [contrast, setContrast] = useState(50);
 
   const handleChange = (event, newValue) => {
     setState(newValue);
+  };
+  const handleBrightnessChange = (event, newValue) => {
+    setBrightness(newValue);
+  };
+  const handleContrastChange = (event, newValue) => {
+    setContrast(newValue);
   };
   return (
     <div className={classes.root}>
@@ -65,8 +73,8 @@ function Settings() {
               Brightness
             </Typography>
             <PrettoSlider
-              value={state}
-              onChange={handleChange}
+              value={brightness}
+              onChange={handleBrightnessChange}
               aria-labelledby="continuous-slider"
               min={0}
               max={100}
@@ -79,8 +87,8 @@ function Settings() {
               Contrast
             </Typography>
             <PrettoSlider
-              value={state}
-              onChange={handleChange}
+              value={contrast}
+              onChange={handleContrastChange}
               aria-labelledby="continuous-slider"
               min={0}
               max={100}
