@@ -51,12 +51,12 @@ const PrettoSlider = withStyles({
 
 function Settings() {
   const classes = useStyles();
-  const [state, setState] = useState(50);
+  const [saturation, setSaturation] = useState(50);
   const [brightness, setBrightness] = useState(50);
   const [contrast, setContrast] = useState(50);
 
   const handleChange = (event, newValue) => {
-    setState(newValue);
+    setSaturation(newValue);
   };
   const handleBrightnessChange = (event, newValue) => {
     setBrightness(newValue);
@@ -101,7 +101,7 @@ function Settings() {
               Saturation
             </Typography>
             <PrettoSlider
-              value={state}
+              value={saturation}
               onChange={handleChange}
               aria-labelledby="continuous-slider"
               min={0}
