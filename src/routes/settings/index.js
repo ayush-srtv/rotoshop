@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import debounce from "lodash/debounce";
+import storage from "../../utils/storage/";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -48,21 +50,42 @@ const PrettoSlider = withStyles({
     borderRadius: 4
   }
 })(Slider);
+const DELAY = 1000;
+const setConfig = debounce(
+  async (key, value) => await storage.set(key, value),
+  DELAY
+);
 
 function Settings() {
   const classes = useStyles();
-  const [saturation, setSaturation] = useState(50);
-  const [brightness, setBrightness] = useState(50);
-  const [contrast, setContrast] = useState(50);
+  const [saturation, setSaturation] = useState(0);
+  const [brightness, setBrightness] = useState(0);
+  const [contrast, setContrast] = useState(0);
 
-  const handleChange = (event, newValue) => {
+  useEffect(() => {
+    async function setupDefaults() {
+      const _saturation = (await storage.get("saturation")) || 0;
+      const _brightness = (await storage.get("brightness")) || 0;
+      const _contrast = (await storage.get("contrast")) || 0;
+      setSaturation(_saturation);
+      setBrightness(_brightness);
+      setContrast(_contrast);
+    }
+    setupDefaults();
+    return () => {};
+  }, []);
+
+  const handleSaturationChange = (event, newValue) => {
     setSaturation(newValue);
+    setConfig("saturation", newValue);
   };
   const handleBrightnessChange = (event, newValue) => {
     setBrightness(newValue);
+    setConfig("brightness", newValue);
   };
   const handleContrastChange = (event, newValue) => {
     setContrast(newValue);
+    setConfig("contrast", newValue);
   };
   return (
     <div className={classes.root}>
@@ -102,7 +125,7 @@ function Settings() {
             </Typography>
             <PrettoSlider
               value={saturation}
-              onChange={handleChange}
+              onChange={handleSaturationChange}
               aria-labelledby="continuous-slider"
               min={0}
               max={100}
