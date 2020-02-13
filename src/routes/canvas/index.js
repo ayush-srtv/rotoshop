@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Editor from "../../components/canvas-editor/";
 import { ImageContext } from "../../utils/context/image.context";
 import { getFileFromEvent, saveImage } from "../../utils/file";
+import storage from "../../utils/storage";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -13,7 +14,15 @@ const useStyles = makeStyles(theme => ({
 
 function Canvas(props, context) {
   const classes = useStyles();
+  const [brightness, setBrightness] = useState(0);
   const { setImage } = useContext(ImageContext);
+  useEffect(() => {
+    async function _getBrightness() {
+      setBrightness((await storage.get("brightness")) || 0);
+    }
+    _getBrightness();
+    return () => {};
+  }, []);
   const canvasProps = {
     canvas: {
       onDrop: event => {
@@ -28,7 +37,8 @@ function Canvas(props, context) {
         _processFile();
       },
       onDragOver: ev => ev.preventDefault()
-    }
+    },
+    brightness
   };
   return (
     <div className={classes.container}>

@@ -39,7 +39,7 @@ function loadImage(url) {
  * 4. use filter props from filter tab
  *
  */
-function Editor({ canvas = {}, image }) {
+function Editor({ canvas = {}, image, brightness = 0 }) {
   const classes = useStyles();
   const ref = useRef(null);
 
@@ -51,8 +51,7 @@ function Editor({ canvas = {}, image }) {
     const canvas = ref.current;
     const ctx = canvas.getContext("2d");
     loadImage(image).then(img => {
-      ctx.filter =
-        "sepia(.15) contrast(1.25) brightness(1.25) hue-rotate(5deg)";
+      ctx.filter = `sepia(.15) contrast(1.25) brightness(${brightness}%) hue-rotate(5deg)`;
       ctx.drawImage(
         img,
         0,
