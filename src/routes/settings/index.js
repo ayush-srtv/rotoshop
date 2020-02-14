@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import debounce from "lodash/debounce";
 import storage from "../../utils/storage/";
+import { SETTINGS } from "../../config/constants";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -64,9 +65,9 @@ function Settings() {
 
   useEffect(() => {
     async function setupDefaults() {
-      const _saturation = (await storage.get("saturation")) || 0;
-      const _brightness = (await storage.get("brightness")) || 0;
-      const _contrast = (await storage.get("contrast")) || 0;
+      const _saturation = (await storage.get(SETTINGS.SATURATION)) || 0;
+      const _brightness = (await storage.get(SETTINGS.BRIGHTNESS)) || 0;
+      const _contrast = (await storage.get(SETTINGS.CONTRAST)) || 0;
       setSaturation(_saturation);
       setBrightness(_brightness);
       setContrast(_contrast);

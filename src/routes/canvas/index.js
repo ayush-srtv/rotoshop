@@ -4,6 +4,7 @@ import Editor from "../../components/canvas-editor/";
 import { ImageContext } from "../../utils/context/image.context";
 import { getFileFromEvent, saveImage } from "../../utils/file";
 import storage from "../../utils/storage";
+import { SETTINGS } from "../../config/constants";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -18,7 +19,7 @@ function Canvas(props, context) {
   const { setImage } = useContext(ImageContext);
   useEffect(() => {
     async function _getBrightness() {
-      setBrightness((await storage.get("brightness")) || 0);
+      setBrightness((await storage.get(SETTINGS.BRIGHTNESS)) || 0);
     }
     _getBrightness();
     return () => {};
