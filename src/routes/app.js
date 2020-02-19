@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => {
 
 function App({ children }) {
   const classes = useStyles();
-  const [image, setImage] = useState();
+  const [image, setImage] = useState(null);
   const titleProps = {
     variant: "h6",
     color: "inherit"
