@@ -48,7 +48,6 @@ function App({ children }) {
         <AppBar position="static">
           <Toolbar>
             <Typography {...titleProps}>Rotoshop</Typography>
-<span> Image Editor</span>
           </Toolbar>
         </AppBar>
         {children}
