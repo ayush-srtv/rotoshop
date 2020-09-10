@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import PhotoFilterIcon from "@material-ui/icons/PhotoFilterOutlined";
-import EditIcon from "@material-ui/icons/EditOutlined";
-import SettingsIcon from "@material-ui/icons/SettingsOutlined";
+import EditIcon from "@material-ui/icons/Edit";
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+import HomeIcon from "@material-ui/icons/Home";
+import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
+import SettingsIcon from "@material-ui/icons/Settings";
+import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
@@ -23,27 +26,32 @@ function a11yProps(index) {
     "aria-controls": `nav-tabpanel-${index}`
   };
 }
-const tabs = [
-  {
-    component: Link,
-    to: "/filters",
-    icon: <PhotoFilterIcon />
-  },
-  {
-    component: Link,
-    to: "/",
-    icon: <EditIcon />
-  },
-  {
-    component: Link,
-    to: "/settings",
-    icon: <SettingsIcon />
-  }
-].map((tab, index) => ({ ...tab, ...a11yProps(index) }));
+const tabs = (index = -1) =>
+  [
+    {
+      component: Link,
+      to: "/filters",
+      icon: [<EditOutlinedIcon />, <EditIcon />]
+    },
+    {
+      component: Link,
+      to: "/",
+      icon: [<HomeOutlinedIcon />, <HomeIcon />]
+    },
+    {
+      component: Link,
+      to: "/settings",
+      icon: [<SettingsOutlinedIcon />, <SettingsIcon />]
+    }
+  ].map(({ icon, ...tab }, key) => ({
+    ...tab,
+    icon: icon[Number(key === index)],
+    ...a11yProps(key)
+  }));
 
 function Navigation({ location: { pathname } }) {
   const classes = useStyles();
-  const index = tabs.findIndex(({ to }) => to === pathname);
+  const index = tabs().findIndex(({ to }) => to === pathname);
   const [value, setValue] = useState(index);
 
   const handleChange = (event, newValue) => setValue(newValue);
@@ -58,8 +66,8 @@ function Navigation({ location: { pathname } }) {
         textColor="secondary"
         aria-label="icon label tabs example"
       >
-        {tabs.map((tab, index) => (
-          <Tab {...tab} {...{ key: index, index }} />
+        {tabs(value).map((tab) => (
+          <Tab {...tab} {...{ key: tab.to, index }} />
         ))}
       </Tabs>
     </Paper>
