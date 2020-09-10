@@ -7,7 +7,7 @@ import debounce from "lodash/debounce";
 import storage from "../../utils/storage/";
 import { SETTINGS } from "../../config/constants";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     padding: "10px 30px",
     height: "calc(100% - 132px)",
@@ -60,7 +60,7 @@ const setConfig = debounce(
 function Settings() {
   const classes = useStyles();
   const [saturation, setSaturation] = useState(0);
-  const [brightness, setBrightness] = useState(0);
+  const [brightness, setBrightness] = useState(100);
   const [contrast, setContrast] = useState(0);
 
   useEffect(() => {

@@ -9,7 +9,7 @@ const themeLogger = (namespace, fn, log = true) => (...args) => {
 const useStyles = makeStyles(
   themeLogger(
     "canvas-editor",
-    theme => ({
+    (theme) => ({
       canvas: {
         height: "calc(100% - 60px)",
         width: "calc(100% - 60px)",
@@ -24,7 +24,7 @@ const useStyles = makeStyles(
 );
 
 function loadImage(url) {
-  return new Promise(r => {
+  return new Promise((r) => {
     let i = new Image();
     i.onload = () => r(i);
     i.src = url;
@@ -39,7 +39,7 @@ function loadImage(url) {
  * 4. use filter props from filter tab
  *
  */
-function Editor({ canvas = {}, image, brightness = 0 }) {
+function Editor({ canvas = {}, image, brightness = 100 }) {
   const classes = useStyles();
   const ref = useRef(null);
 
@@ -50,7 +50,7 @@ function Editor({ canvas = {}, image, brightness = 0 }) {
   useEffect(() => {
     const canvas = ref.current;
     const ctx = canvas.getContext("2d");
-    loadImage(image).then(img => {
+    loadImage(image).then((img) => {
       ctx.filter = `sepia(.15) contrast(1.25) brightness(${brightness}%) hue-rotate(5deg)`;
       ctx.drawImage(
         img,
@@ -64,7 +64,7 @@ function Editor({ canvas = {}, image, brightness = 0 }) {
         canvas.height
       );
     });
-  });
+  }, [image, ref, brightness]);
 
   const canvasProps = Object.assign(
     {},

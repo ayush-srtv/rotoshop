@@ -6,7 +6,7 @@ import { getFileFromEvent, saveImage } from "../../utils/file";
 import storage from "../../utils/storage";
 import { SETTINGS } from "../../config/constants";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     height: "calc(100% - 112px)",
     width: "100%"
@@ -15,18 +15,18 @@ const useStyles = makeStyles(theme => ({
 
 function Canvas(props, context) {
   const classes = useStyles();
-  const [brightness, setBrightness] = useState(0);
+  const [brightness, setBrightness] = useState(100);
   const { setImage } = useContext(ImageContext);
   useEffect(() => {
     async function _getBrightness() {
-      setBrightness((await storage.get(SETTINGS.BRIGHTNESS)) || 0);
+      setBrightness((await storage.get(SETTINGS.BRIGHTNESS)) || 100);
     }
     _getBrightness();
     return () => {};
   }, []);
   const canvasProps = {
     canvas: {
-      onDrop: event => {
+      onDrop: (event) => {
         // Prevent default behavior (Prevent file from being opened)
         event.preventDefault();
         async function _processFile() {
@@ -37,7 +37,7 @@ function Canvas(props, context) {
 
         _processFile();
       },
-      onDragOver: ev => ev.preventDefault()
+      onDragOver: (ev) => ev.preventDefault()
     },
     brightness
   };
