@@ -1,0 +1,31 @@
+{
+  "files": {
+    "canvas.js": "/rotoshop/static/js/canvas.dc3dea94.chunk.js",
+    "canvas.js.map": "/rotoshop/static/js/canvas.dc3dea94.chunk.js.map",
+    "filters.js": "/rotoshop/static/js/filters.a47502f5.chunk.js",
+    "filters.js.map": "/rotoshop/static/js/filters.a47502f5.chunk.js.map",
+    "main.css": "/rotoshop/static/css/main.8956e674.chunk.css",
+    "main.js": "/rotoshop/static/js/main.ce33ceca.chunk.js",
+    "main.js.map": "/rotoshop/static/js/main.ce33ceca.chunk.js.map",
+    "runtime-main.js": "/rotoshop/static/js/runtime-main.dc619076.js",
+    "runtime-main.js.map": "/rotoshop/static/js/runtime-main.dc619076.js.map",
+    "settings.js": "/rotoshop/static/js/settings.9841941e.chunk.js",
+    "settings.js.map": "/rotoshop/static/js/settings.9841941e.chunk.js.map",
+    "static/js/5.1a420730.chunk.js": "/rotoshop/static/js/5.1a420730.chunk.js",
+    "static/js/5.1a420730.chunk.js.map": "/rotoshop/static/js/5.1a420730.chunk.js.map",
+    "static/js/6.7b73b2a4.chunk.js": "/rotoshop/static/js/6.7b73b2a4.chunk.js",
+    "static/js/6.7b73b2a4.chunk.js.map": "/rotoshop/static/js/6.7b73b2a4.chunk.js.map",
+    "static/js/7.3a485738.chunk.js": "/rotoshop/static/js/7.3a485738.chunk.js",
+    "static/js/7.3a485738.chunk.js.map": "/rotoshop/static/js/7.3a485738.chunk.js.map",
+    "index.html": "/rotoshop/index.html",
+    "precache-manifest.9ed886bef22599c84dce95d739198324.js": "/rotoshop/precache-manifest.9ed886bef22599c84dce95d739198324.js",
+    "service-worker.js": "/rotoshop/service-worker.js",
+    "static/css/main.8956e674.chunk.css.map": "/rotoshop/static/css/main.8956e674.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dc619076.js",
+    "static/js/5.1a420730.chunk.js",
+    "static/css/main.8956e674.chunk.css",
+    "static/js/main.ce33ceca.chunk.js"
+  ]
+}
