@@ -31,7 +31,7 @@ function RouterConfig() {
   ];
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <App>
         <Suspense fallback={<Loader />}>
           <Switch>
