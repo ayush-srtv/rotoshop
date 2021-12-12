@@ -101,7 +101,7 @@ function Settings() {
               onChange={handleBrightnessChange}
               aria-labelledby="continuous-slider"
               min={0}
-              max={100}
+              max={200}
             />
           </div>
         </Grid>
